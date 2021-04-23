@@ -1,0 +1,15 @@
+.nav-bar {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid black;  
+    font-size: 50px;
+    &__link {
+        padding-right: 100px;
+        border-bottom: none;
+        transition: 0.3s ease-in-out;
+        &:hover {
+            color: lightgrey;
+        }
+    }
+}

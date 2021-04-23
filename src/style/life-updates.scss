@@ -1,0 +1,85 @@
+.life-updates {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 50px;
+    &__news-feed {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        
+    }
+    &__select-container {
+        width: auto;
+        height: 100%;
+    }
+    &__select {
+        width: 250px;
+        position: relative;
+        
+        select {
+            width: 100%;
+            height: 50px;
+            border: none;
+            font-size: 25px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+             
+        }
+        
+    }
+}
+
+.news-feed {
+    &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 1000px;
+        &__title {
+            font-size: 30px;
+            font-weight: 900;
+        }
+    }
+}
+
+
+
+.article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid darkslategrey;
+    height: 350px;
+    width: 1750px;
+    font-weight: 900;
+    color: black;
+    transition: 0.4s ease-in-out;
+    &:hover {
+        img {
+            opacity: 0.7
+        }
+    }
+    &__image {
+        width: inherit;
+        height: inherit;
+        pointer-events: none;
+        position: absolute;
+        object-fit: cover;
+        z-index: -10;
+        opacity: 0.5;
+        
+        
+    }
+    &__title {
+        font-size: 25px;
+    }
+    &__description {
+        font-size: 30px;
+    }
+}

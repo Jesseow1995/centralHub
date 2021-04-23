@@ -1,0 +1,42 @@
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 2 / 3;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+    margin-top: 70px;
+    
+    
+    .blog-item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        border: 1px solid black;
+        border-radius: 6px;
+        padding: 15px;
+        width: 550px;
+        align-items: center;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            background-color: lightgrey;
+
+            .blog-content {
+                max-height: 1000px;
+            }
+        }
+
+        .blog-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    }
+
+    .blog-content {
+        max-height: 50px;
+        overflow: hidden;
+        transition: all .3s ease-in-out;
+    }
+}

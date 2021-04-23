@@ -1,0 +1,25 @@
+.central-hub {
+    display: grid;
+    grid-template-columns: [nav-bar-s] 1fr [ life-updates-s] 700px [life-updates-e] 1fr [nav-bar-e ];
+    grid-template-rows: [s] 1fr [e];
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar {
+    grid-column: nav-bar-s/nav-bar-e;
+    position: fixed;
+    width:100%;
+    z-index: 10;
+    background-color: black;
+    color: white;
+
+}
+.life-updates {
+    grid-column: nav-bar-s/nav-bar-e;
+    margin-top: 70px;
+}
+
+.media {
+    grid-column: nav-bar-s/nav-bar-e;
+}

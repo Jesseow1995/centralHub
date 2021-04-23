@@ -1,0 +1,41 @@
+@import './life-updates.scss';
+@import './main-page.scss';
+@import './media.scss';
+@import './nav-bar.scss';
+@import './app.scss';
+@import './centralhub.scss';
+@import './blog.scss';
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+
+
+
+
+// HTML FOR LIFE UPDATES PAGE
+//   <div class="grid-container">
+//   <div class="Email"></div>
+//   <div class="News"></div>
+//   <div class="Title\\\/Navbar"></div>
+//   <div class="Footer"></div>
+// </div>
+
+
+// CSS FOR LIFE UPDATES PAGE
+// .grid-container {
+//     display: grid;
+//     grid-template-columns: 1.6fr 1.6fr;
+//     grid-template-rows: 0.6fr 1.9fr 0.5fr;
+//     gap: 0px 0px;
+//     grid-template-areas:
+//       "Tittle\\\/Navbar Tittle\\\/Navbar"
+//       "Email News"
+//       "Footer Footer";
+//   }
+//   .Email { grid-area: Email; }
+//   .News { grid-area: News; }
+//   .Tittle\\\/Navbar { grid-area: Tittle\\\/Navbar; }
+//   .Footer { grid-area: Footer; }
