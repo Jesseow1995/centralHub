@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import youtubeAPIkey from '../hidden/variables';
 
 export default class Media extends Component {
     constructor() {
@@ -29,7 +30,7 @@ export default class Media extends Component {
 
     }
     getYouTubeData() {
-        axios.get('https://www.googleapis.com/youtube/v3/videos?id=wATH0Rl8Lew&key=AIzaSyB_q0TEto5sFJBMzgqPB8uGFkzByakfoJI')
+        axios.get(`https://www.googleapis.com/youtube/v3/videos?id=wATH0Rl8Lew&key=${youtubeAPIkey}`)
             .then(response => {
                 console.log('response', response);
                 this.setState({

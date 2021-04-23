@@ -1,5 +1,5 @@
-# React/Redux Starter Project
+# Central Hub
 
-> Provided for the students of the [Bottega Code School](https://bottega.tech/)
+> Capstone project for Bottega Code School
 
-*Fork from [es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter)*
+A central hub to provide easy access to your favorite things, such as a scheduler, up to date news articles, youtube videos, and your own blog.

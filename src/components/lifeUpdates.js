@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import newsAPIkey from '../hidden/variables';
 
 class LifeUpdates extends Component {
     constructor(props) {
@@ -16,15 +16,13 @@ class LifeUpdates extends Component {
     }
 
     getCountry(e) {
-
         this.setState({ country: e.target.value });
         console.log('Selected Country', this.state.country)
         this.getArticles(e.target.value);
-
     }
 
     getArticles(country) {
-        axios.get(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=f89dcb6f801e4e5da067573891113af7`)
+        axios.get(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}`)
             .then(response => {
                 console.log(response);
                 this.setState({
