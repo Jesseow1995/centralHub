@@ -63,14 +63,17 @@ class MainPage extends Component {
                                     startDate: args.day
                                 })
                             }}
+
                         />
                     </div>
                     <div style={styles.main}>
                         <DayPilotCalendar
                             {...config}
+                            heightSpec="Full"
                             ref={component => {
                                 this.calendar = component && component.control
                             }}
+
                         />
                     </div>
 

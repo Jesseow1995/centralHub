@@ -73,8 +73,7 @@
         object-fit: cover;
         z-index: -10;
         opacity: 0.5;
-        
-        
+
     }
     &__title {
         font-size: 25px;
@@ -82,4 +81,34 @@
     &__description {
         font-size: 30px;
     }
+}
+
+
+@media only screen and (max-width: 1200px) { 
+    .life-updates {
+        padding: 0;
+    }
+    .news-feed {
+        margin-top: 150px;
+        width: 100%;
+        &__header {
+            width: inherit;
+            &__title {
+                font-size: 0.95em;
+            }
+        }
+    }
+    .article {
+        width: 100%;
+        &__title {
+            font-size: 0.8em;
+        }
+        &__description {
+            font-size: 0.95em;
+        }
+        &__image {
+            width: inherit;
+        }
+    }
+    
 }

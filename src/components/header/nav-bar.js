@@ -8,7 +8,7 @@ export default class NavBar extends Component {
     render() {
         return (
             <div className='nav-bar'>
-                <div>
+                <div className='nav-bar-links'>
                     {/* <NavLink exact to='/' className='nav-bar-link'>Home</NavLink>
                     <NavLink exact to='/lifeUpdates' className='nav-bar-link'>Life Updates</NavLink>
                     <NavLink exact to='/media' className='nav-bar-link'>Media</NavLink> */}

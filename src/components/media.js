@@ -12,33 +12,24 @@ export default class Media extends Component {
             youtubeCategoryVideos: {},
             videoCategoryId: '1'
         }
-        // this.handleChange = this.handleChange.bind(this)
         this.getVideos = this.getVideos.bind(this)
     }
 
-    // getVideos(e) {
-    //     this.setState({
-    //         [e.target.name]: e.target.value,
-    //         errorText: ""
-    //     })
-    // }
-    getVideos(e) {
 
+    getVideos(e) {
         this.setState({ videoCategoryId: e.target.value });
         console.log('Selected Category', this.state.videoCategoryId)
         this.getYouTubeChannel(e.target.value);
-
     }
+
     getYouTubeData() {
         axios.get(`https://www.googleapis.com/youtube/v3/videos?id=wATH0Rl8Lew&key=${youtubeAPIkey}`)
             .then(response => {
                 console.log('response', response);
                 this.setState({
                     youtubeVidId: response.data.items[0].id
-
                 })
                 console.log('this is the youtubeVidId', this.state.youtubeVidId)
-
             })
 
 
@@ -109,7 +100,6 @@ export default class Media extends Component {
                                     return (<iframe key={video.id.videoId} className='youtube-video' src={`https://www.youtube.com/embed/${video.id.videoId}`}
                                         frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen>
-
                                     </iframe>)
                                 })
                             }

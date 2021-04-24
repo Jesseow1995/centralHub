@@ -22,7 +22,7 @@ class LifeUpdates extends Component {
     }
 
     getArticles(country) {
-        axios.get(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}`)
+        axios.get(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=f89dcb6f801e4e5da067573891113af7`)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -47,7 +47,7 @@ class LifeUpdates extends Component {
 
                 <div className='life-updates__news-feed news-feed'>
                     <div className='news-feed__header'>
-                        <div className='news-feed__header__title'>Top Headlines from {this.state.country.toUpperCase()}</div>
+                        <div className='news-feed__header__title'>Headlines from {this.state.country.toUpperCase()}</div>
                         <div className='life-updates__select-container'>
                             <div className='life-updates__select'>
                                 <select onChange={this.getCountry} value={this.state.country} className='life-updates__select__select' id='select-country'>

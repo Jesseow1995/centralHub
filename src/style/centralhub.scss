@@ -23,3 +23,11 @@
 .media {
     grid-column: nav-bar-s/nav-bar-e;
 }
+
+@media only screen and (max-width: 600px) {
+    .central-hub {
+        width: 100%;
+        grid-template-columns: [nav-bar-s] 1fr [ life-updates-s] 1fr [life-updates-e] 1fr [nav-bar-e];
+    }
+
+}
