@@ -86,3 +86,13 @@ select {
     -moz-appearance: none;
     appearance: none;
 }
+
+@media only screen and (max-width: 1200px) {
+    .media__content__sub-content {
+        margin-top: 300px;   
+    }
+
+    .youtube-video {
+        width: 100%;
+    }
+}

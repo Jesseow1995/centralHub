@@ -5,9 +5,7 @@ const styles = {
     wrap: {
         display: "flex"
     },
-    left: {
-        marginRight: "10px"
-    },
+
     main: {
         flexGrow: "1",
         width: '1000px'
@@ -18,7 +16,7 @@ class MainPage extends Component {
         super(props);
 
         this.state = {
-            viewType: "Week",
+            viewType: "Day",
             durationBarVisible: false,
             timeRangeSelectedHandling: "Enabled",
             onTimeRangeSelected: args => {
@@ -52,10 +50,10 @@ class MainPage extends Component {
         const { ...config } = this.state;
         return (
             <div className="main-page-wrapper">
-                <div style={styles.left} className='main-page'>
+                <div className='main-page'>
                     <div className='navigator'>
                         <DayPilotNavigator
-                            selectMode={"week"}
+                            selectMode={"day"}
                             showMonths={1}
                             skipMonths={1}
                             onTimeRangeSelected={args => {
@@ -63,10 +61,12 @@ class MainPage extends Component {
                                     startDate: args.day
                                 })
                             }}
+                            cssClassPrefex="default"
+
 
                         />
                     </div>
-                    <div style={styles.main}>
+                    <div className="calendar">
                         <DayPilotCalendar
                             {...config}
                             heightSpec="Full"
@@ -78,7 +78,7 @@ class MainPage extends Component {
                     </div>
 
                 </div>
-            </div>
+            </div >
         )
     }
 }

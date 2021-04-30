@@ -40,3 +40,11 @@
         transition: all .3s ease-in-out;
     }
 }
+
+@media only screen and (max-width: 1200px) {
+    .blog-container {
+        grid-column: 1 / 4;
+        margin-top: 250px;
+        width: 100%;
+    }
+}

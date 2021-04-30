@@ -4,3 +4,13 @@
     border: none;
     font-size: 20px;
 }
+
+.navigator_default_cell {
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+}
+
+.navigator_default_month {
+    font-size: 50px;
+}
