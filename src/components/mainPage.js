@@ -6,10 +6,7 @@ const styles = {
         display: "flex"
     },
 
-    main: {
-        flexGrow: "1",
-        width: '1000px'
-    }
+
 }
 class MainPage extends Component {
     constructor(props) {

@@ -19,7 +19,7 @@ app.post('/blog-data', function (req, res) {
     res.send(JSON.stringify(blogData));
     return;
   }
-  blogData.portfolio_blogs.push({ ...req.body, id: (blogData.portfolio_blogs[blogData.portfolio_blogs.length - 1].id + 1) });
+  blogData.blogs.push({ ...req.body, id: (blogData.blogs[blogData.blogs.length - 1].id + 1) });
   fs.writeFileSync('blog-data.json', JSON.stringify(blogData));
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(blogData));
@@ -27,7 +27,7 @@ app.post('/blog-data', function (req, res) {
 
 app.delete(`/blog-data/:blogId`, function (req, res) {
   const blogId = req.params.blogId;
-  blogData.portfolio_blogs = blogData.portfolio_blogs.filter(blog => blog.id != blogId)
+  blogData.blogs = blogData.blogs.filter(blog => blog.id != blogId)
   fs.writeFileSync('blog-data.json', JSON.stringify(blogData));
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(blogData))

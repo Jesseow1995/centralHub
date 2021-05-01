@@ -1,6 +1,5 @@
 .main-page-wrapper {
     grid-column: 1/4;
-    //margin-left: 125px;
     margin-top: 50px;
     display: flex;
     align-items: center;
@@ -13,7 +12,6 @@
     margin-top: 70px;   
     width: 75%;
     height: 75%;
-    //padding-left: 150px;
 
     .calendar {
         flex-grow: 1;  
@@ -33,11 +31,14 @@
         justify-content: center;
         width: 100%;
         .navigator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
            margin-top: 150px;
            height: 100%;
            width: 100%;
            margin-bottom: 50px;
-           margin-left: 50px;
+           
         }
         .calendar {
             width: 300px;

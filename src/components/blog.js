@@ -6,7 +6,7 @@ class Blog extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            blogItems: { portfolio_blogs: [] },
+            blogItems: { blogs: [] },
             blogModalIsOpen: false
         }
 
@@ -24,7 +24,7 @@ class Blog extends Component {
     handleSuccessfulNewBlogSubmission(blogs) {
         this.setState({
             blogModalIsOpen: false,
-            blogItems: { portfolio_blogs: blogs }
+            blogItems: { blogs: blogs }
         });
     }
 
@@ -60,12 +60,13 @@ class Blog extends Component {
         return (
             <div className="blog-container">
                 <BlogModal
+                    className="modal"
                     handleSuccessfulNewBlogSubmission={this.handleSuccessfulNewBlogSubmission}
                     handleModalClose={this.handleModalClose}
                     modalIsOpen={this.state.blogModalIsOpen}
                 />
 
-                {this.state.blogItems.portfolio_blogs.map(function (blogItem) {
+                {this.state.blogItems.blogs.map(function (blogItem) {
                     return (
                         <div className="blog-item" key={blogItem.id}>
                             <div className="blog-title">{blogItem.title}</div>

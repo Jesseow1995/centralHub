@@ -1,5 +1,5 @@
 {
-    "portfolio_blogs": [
+    "blogs": [
         {
             "id": 0,
             "title": "The Way of Kings",
@@ -57,20 +57,6 @@
             ]
         },
         {
-            "id": 5,
-            "title": "asdfasdfadsfasd",
-            "content": "asdfasdfasdfasfas",
-            "blog_status": "draft",
-            "featured_image_url": "https://devcamp-space.s3.amazonaws.com/QftDQjJzmukmAHAop5wqcKX6?response-content-disposition=inline%3B%20filename%3D%22Kal_vs._Szeth5.jpg%22%3B%20filename%2A%3DUTF-8%27%27Kal_vs._Szeth5.jpgresponse-content-type=image%2FjpegX-Amz-Algorithm=AWS4-HMAC-SHA256X-Amz-Credential=AKIAJEHZJNHM5JFESRRQ%2F20210329%2Fus-east-1%2Fs3%2Faws4_requestX-Amz-Date=20210329T211800ZX-Amz-Expires=300X-Amz-SignedHeaders=hostX-Amz-Signature=7329129042a6a22ad14824a4214369a6f460ece46c38ebf1176e002532cf84a0",
-            "column_names_merged_with_images": [
-                "id",
-                "title",
-                "content",
-                "blog_status",
-                "featured_image"
-            ]
-        },
-        {
             "id": 6,
             "title": "asdfasdfadsfas",
             "content": "asdfafasdfasdfasdfasdfa",
@@ -83,10 +69,16 @@
                 "blog_status",
                 "featured_image"
             ]
+        },
+        {
+            "title": "My New Blog",
+            "content": "My New Blog Content\n",
+            "id": 7
+        },
+        {
+            "title": "asdfasdfasdfasdf",
+            "content": "adsfasdfasdfa",
+            "id": 8
         }
-    ],
-    "meta": {
-        "total_pages": 2,
-        "total_records": 10
-    }
+    ]
 }
