@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import youtubeAPIkey from '../hidden/variables';
+import { youtubeAPIkey } from '../hidden/variables';
 
 export default class Media extends Component {
     constructor() {
@@ -76,7 +76,6 @@ export default class Media extends Component {
                 <div className='media__content'>
                     <div className='media__content__sub-content'>
                         <div className='media__content__sub-content__header'>
-                            <div className='media__content__sub-content__header__title'></div>
                             <div className='categories__select '>
                                 <select className='categories__select__select' onChange={this.getVideos} id='select-category'>
                                     <option key='0' value=''>Select a category {String.fromCharCode(9660)}</option>

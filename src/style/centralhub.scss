@@ -6,15 +6,7 @@
     justify-content: center;
 }
 
-.nav-bar {
-    grid-column: nav-bar-s/nav-bar-e;
-    position: fixed;
-    width:100%;
-    z-index: 10;
-    background-color: black;
-    color: white;
 
-}
 .life-updates {
     grid-column: nav-bar-s/nav-bar-e;
     margin-top: 70px;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import newsAPIkey from '../hidden/variables';
+import { newsAPIkey } from '../hidden/variables';
 
 class LifeUpdates extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class LifeUpdates extends Component {
     }
 
     getArticles(country) {
-        axios.get(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=f89dcb6f801e4e5da067573891113af7`)
+        axios.get(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}`)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -120,7 +120,7 @@ class LifeUpdates extends Component {
 
                                     <img className='article__image' src={article.urlToImage}></img>
                                     <div className='article__title'><h1>{article.title}</h1></div>
-                                    <div className='article__description'>{article.description}</div>
+                                    <div className='article__description'>{article.description.substr(0, 150) + '...'}</div>
                                     <a href={article.url} target="_blank" className='article__link'>View full article</a>
 
 

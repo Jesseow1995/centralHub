@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 50px;
+
     &__news-feed {
         display: flex;
         flex-direction: column;
@@ -27,7 +27,12 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-             
+             border: 1px solid transparent;
+             border-radius: 10px;
+            &:hover {
+                cursor: pointer;
+                border-color: black;
+            }
         }
         
     }
@@ -40,10 +45,18 @@
         align-items: center;
         justify-content: space-around;
         width: 1000px;
+        margin: 10px 0;
+
         &__title {
             font-size: 30px;
             font-weight: 900;
         }
+    }
+
+    &__articles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -55,31 +68,52 @@
     align-items: center;
     justify-content: center;
     border: 1px solid darkslategrey;
+    border-radius: 10px;
     height: 350px;
-    width: 100%;
+    width: 90%;
     font-weight: 900;
     color: black;
     transition: 0.4s ease-in-out;
+    position: relative;
+    padding: 15px;
+    box-sizing: border-box;
+
+    &:not(:last-of-type) {
+        margin-bottom: 15px;
+    }
     &:hover {
         img {
             opacity: 0.7
         }
     }
+
     &__image {
-        width: inherit;
+        width: 100%;
         height: inherit;
         pointer-events: none;
         position: absolute;
         object-fit: cover;
         z-index: -10;
         opacity: 0.5;
+        border: none;
+        border-radius: 10px;
 
+        &:not([src]) {
+            background-color: darkgray;
+        }
     }
     &__title {
         font-size: 25px;
+        text-align: center;
+
+        h1 {
+            margin-top: 0;
+        }
     }
     &__description {
+        text-align: center;
         font-size: 30px;
+        margin-bottom: 10px;
     }
 }
 
@@ -88,14 +122,15 @@
     .life-updates {
         padding: 0;
     }
+
     .news-feed {
-        margin-top: 150px;
+        margin-top: 40px;
         width: 100%;
         &__header {
             flex-direction: column;
             width: inherit;
             &__title {
-                font-size: 0.95em;
+                font-size: 30px;
             }
         }
     }
@@ -104,15 +139,12 @@
         padding-left: 15px;
     }
     .article {
-        width: 100%;
+        width: 95%;
         &__title {
             font-size: 0.8em;
         }
         &__description {
             font-size: 0.95em;
-        }
-        &__image {
-            width: inherit;
         }
     }
     
