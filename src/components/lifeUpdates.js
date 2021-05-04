@@ -120,10 +120,8 @@ class LifeUpdates extends Component {
 
                                     <img className='article__image' src={article.urlToImage}></img>
                                     <div className='article__title'><h1>{article.title}</h1></div>
-                                    <div className='article__description'>{article.description.substr(0, 150) + '...'}</div>
+                                    <div className='article__description'>{article.description ? (article.description.substr(0, 150) + '...') : (article.description)}</div>
                                     <a href={article.url} target="_blank" className='article__link'>View full article</a>
-
-
 
                                 </div>)
                             })
