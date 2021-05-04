@@ -20,9 +20,9 @@ class LifeUpdates extends Component {
         console.log('Selected Country', this.state.country)
         this.getArticles(e.target.value);
     }
-
+    //https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}
     getArticles(country) {
-        axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}`)
+        axios.get(`https://gnews.io/api/v4/stop-headlines?country=${country}&token=${newsAPIkey}`)
             .then(response => {
                 console.log(response);
                 this.setState({
