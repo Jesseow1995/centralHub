@@ -22,7 +22,12 @@ class LifeUpdates extends Component {
     }
     //https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}
     getArticles(country) {
-        axios.get(`https://gnews.io/api/v4/stop-headlines?country=${country}&token=${newsAPIkey}`)
+        const headers = {
+            crossorigin: true,
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET'
+        }
+        axios.get(`https://gnews.io/api/v4/top-headlines?country=${country}&token=${newsAPIkey}`)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -118,7 +123,7 @@ class LifeUpdates extends Component {
                             data.map(function (article) {
                                 return (<div className='news-feed__article article' key={article.title}>
 
-                                    <img className='article__image' src={article.urlToImage}></img>
+                                    <img className='article__image' src={article.image}></img>
                                     <div className='article__title'><h1>{article.title}</h1></div>
                                     <div className='article__description'>{article.description ? (article.description.substr(0, 150) + '...') : (article.description)}</div>
                                     <a href={article.url} target="_blank" className='article__link'>View full article</a>

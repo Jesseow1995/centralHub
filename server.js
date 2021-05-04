@@ -5,12 +5,12 @@ const app = express();
 
 var blogData = JSON.parse(fs.readFileSync('blog-data.json'));
 
-app.get('/blog-data.json', function(req, res) {
+app.get('/blog-data.json', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(blogData));
 });
 
-app.post('/blog-data.json', function(req, res) {
+app.post('/blog-data.json', function (req, res) {
   blogData.push(req.body);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(blogData));
