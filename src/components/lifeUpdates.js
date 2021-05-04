@@ -22,7 +22,7 @@ class LifeUpdates extends Component {
     }
 
     getArticles(country) {
-        axios.get(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}`)
+        axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}`)
             .then(response => {
                 console.log(response);
                 this.setState({
