@@ -29,7 +29,7 @@ class Blog extends Component {
     }
 
     getBlogItems() {
-        axios.get('http://localhost:3001/blog-data')
+        axios.get('https://centralhubapi.herokuapp.com/blog-data')
             .then(response => {
                 this.setState({ blogItems: response.data });
                 console.log(this.state);
@@ -47,7 +47,7 @@ class Blog extends Component {
     }
 
     handleDeleteBlog(blogId) {
-        axios.delete(`http://localhost:3001/blog-data/${blogId}`).then(response => {
+        axios.delete(`https://centralhubapi.herokuapp.com/blog-data/${blogId}`).then(response => {
             console.log('delete', response)
             this.setState({
                 blogItems: response.data
