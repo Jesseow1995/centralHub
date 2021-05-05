@@ -10,7 +10,7 @@ export default class BlogForm extends Component {
       id: "",
       title: "",
       content: "",
-      apiUrl: "http://localhost:3001/blog-data",
+      apiUrl: "https://centralhubapi.herokuapp.com/blog-data",
       apiAction: "post"
     }
     this.handleChange = this.handleChange.bind(this)
