@@ -20,6 +20,8 @@ class LifeUpdates extends Component {
         console.log('Selected Country', this.state.country)
         this.getArticles(e.target.value);
     }
+
+    //old news api that did not work after deploying on heroku
     //https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}
     getArticles(country) {
         const headers = {
@@ -112,9 +114,6 @@ class LifeUpdates extends Component {
                                     <option value='ve'>VE</option>
                                     <option value='za'>ZA</option>
                                 </select>
-                                {/* <div className='submit-button'>
-                        <button onClick={ }>Submit</button>
-                    </div> */}
                             </div>
                         </div>
                     </div>
