@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
+//https://centralhubapi.herokuapp.com/blog-data
 export default class BlogForm extends Component {
   constructor(props) {
     super(props)
@@ -10,7 +10,7 @@ export default class BlogForm extends Component {
       id: "",
       title: "",
       content: "",
-      apiUrl: "https://centralhubapi.herokuapp.com/blog-data",
+      apiUrl: "",
       apiAction: "post"
     }
     this.handleChange = this.handleChange.bind(this)
@@ -18,7 +18,7 @@ export default class BlogForm extends Component {
   }
 
   handleSubmit(event) {
-    axios.post(this.state.apiUrl, { title: this.state.title, content: this.state.content }).then(resp => {
+    axios.patch(`http://localhost:3001/blog-data/${this.props.username}`, { title: this.state.title, content: this.state.content }).then(resp => {
       console.log(resp);
       this.setState({
         id: "",

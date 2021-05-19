@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { youtubeAPIkey } from '../hidden/variables';
 
+
+const WAIT_INTERVAL = 3000;
+const ENTER_KEY = 13;
+
 export default class Media extends Component {
     constructor() {
         super()
@@ -9,68 +13,101 @@ export default class Media extends Component {
         this.state = {
             youtubeVidId: '',
             youtubeVideoCategory: {},
-            youtubeCategoryVideos: {},
-            videoCategoryId: '1'
+            youtubeVideos: {},
+            videoCategoryId: '1',
+            query: '',
+            typingTimeout: 0
         }
         this.getVideos = this.getVideos.bind(this)
+        this.getVideosFromQuery = this.getVideosFromQuery.bind(this)
     }
 
+    componentWillMount() {
+        this.timer = null;
+    }
+
+    componentDidMount() {
+        this.getYouTubeCategories()
+        this.getYouTubeCategoryVideos('15')
+    }
 
     getVideos(e) {
         this.setState({ videoCategoryId: e.target.value });
         console.log('Selected Category', this.state.videoCategoryId)
-        this.getYouTubeChannel(e.target.value);
+        this.getYouTubeCategoryVideos(e.target.value);
     }
 
-    getYouTubeData() {
-        axios.get(`https://www.googleapis.com/youtube/v3/videos?id=wATH0Rl8Lew&key=${youtubeAPIkey}`)
+    getVideosFromQuery(e) {
+        clearTimeout(this.timer);
+        this.setState({ query: e.target.value })
+
+        this.timer = setTimeout(this.submitChange, WAIT_INTERVAL)
+    }
+
+    handleKeyDown = e => {
+        if (e.keyCode === ENTER_KEY) {
+            clearTimeout(this.timer)
+            this.submitChange();
+        }
+    }
+
+    submitChange = () => {
+        const query = this.state.query
+        this.getYouTubeQuery(query);
+    }
+
+    getYouTubeQuery(query) {
+        axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=5&order=viewCount&q=${query}&regionCode=us&type=video&videoEmbeddable=true&key=AIzaSyB_q0TEto5sFJBMzgqPB8uGFkzByakfoJI`)
             .then(response => {
-                console.log('response', response);
+                console.log('response for youtube query:', query, response)
                 this.setState({
-                    youtubeVidId: response.data.items[0].id
+                    youtubeVideos: response.data.items
                 })
-                console.log('this is the youtubeVidId', this.state.youtubeVidId)
             })
-
-
     }
 
+    //to get a specific video using the youtube videos id
+    // getYouTubeData() {
+    //     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=wATH0Rl8Lew&key=${youtubeAPIkey}`)
+    //         .then(response => {
+    //             console.log('response', response);
+    //             this.setState({
+    //                 youtubeVidId: response.data.items[0].id
+    //             })
+    //             console.log('this is the youtubeVidId', this.state.youtubeVidId)
+    //         })
+    // }
+
+
+    // retrieve category names built into youtube api
     getYouTubeCategories() {
         axios.get(`https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=us&key=AIzaSyB_q0TEto5sFJBMzgqPB8uGFkzByakfoJI`)
             .then(response => {
-                console.log('response for youtube channel', response);
+                console.log('response for youtube categories', response);
                 this.setState({
                     youtubeVideoCategory: response.data.items
                 })
                 console.log('categories', this.state.youtubeVideoCategory)
-
             })
     }
 
-    getYouTubeChannel(category) {
+    //retreive the youtube videos for the specific categories from youtube api
+    getYouTubeCategoryVideos(category) {
         axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&regionCode=us&relevanceLanguage=en&type=video&videoEmbeddable=true&videoCategoryId=${category}&key=AIzaSyB_q0TEto5sFJBMzgqPB8uGFkzByakfoJI`)
             .then(response => {
                 console.log('response for category search', response)
                 this.setState({
-                    youtubeCategoryVideos: response.data.items
+                    youtubeVideos: response.data.items
                 })
                 console.log('videos', this.state.youtubeCategoryVideos)
             })
-    }
-
-    componentDidMount() {
-        this.getYouTubeData()
-        this.getYouTubeCategories()
-        this.getYouTubeChannel('15')
-
-
     }
 
     render() {
         const youtubeVidId = this.state.youtubeVidId;
 
         const categoryId = Array.from(this.state.youtubeVideoCategory)
-        const youTubeCategoryVideos = Array.from(this.state.youtubeCategoryVideos)
+        const youTubeCategoryVideos = Array.from(this.state.youtubeVideos)
         return (
             <div className='media'>
                 <div className='media__content'>
@@ -86,8 +123,16 @@ export default class Media extends Component {
                                             )
                                         })
                                     }
-
                                 </select>
+
+                                <input
+                                    name='query'
+                                    type='text'
+                                    placeholder='Enter query'
+                                    value={this.state.query}
+                                    onChange={this.getVideosFromQuery}
+                                    onKeyDown={this.handleKeyDown}
+                                />
 
                             </div>
                         </div>

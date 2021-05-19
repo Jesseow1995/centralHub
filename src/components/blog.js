@@ -2,18 +2,39 @@ import React, { Component } from 'react';
 import BlogModal from '../blog/blogModal';
 import axios from 'axios';
 
+const ENTER_KEY = 13;
+
 class Blog extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            blogItems: { blogs: [] },
-            blogModalIsOpen: false
+            blogItems: [],
+            blogModalIsOpen: false,
+            username: "",
+            loggedIn: false
         }
 
         this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(this);
         this.openModal = this.openModal.bind(this);
         this.handleModalClose = this.handleModalClose.bind(this);
         this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
+        this.getUsername = this.getUsername.bind(this);
+        this.createUser = this.createUser.bind(this);
+    }
+
+    createUser() {
+        const username = this.state.username
+        const password = document.querySelector("#password").value
+
+        const createUser = this.state.createUser
+        console.log(createUser)
+        axios.put('http://localhost:3001/blog-data', { username, password })
+            .then(response => {
+                this.setState({
+                    username: username,
+                    loggedIn: true
+                })
+            })
     }
 
     handleModalClose() {
@@ -21,39 +42,65 @@ class Blog extends Component {
             blogModalIsOpen: false
         })
     }
-    handleSuccessfulNewBlogSubmission(blogs) {
-        this.setState({
-            blogModalIsOpen: false,
-            blogItems: { blogs: blogs }
-        });
-    }
-
-    getBlogItems() {
-        axios.get('https://centralhubapi.herokuapp.com/blog-data')
+    handleSuccessfulNewBlogSubmission() {
+        axios.get(`http://localhost:3001/blog-data/${this.state.username}`)
             .then(response => {
-                this.setState({ blogItems: response.data });
-                console.log(this.state);
+                if (response.status === 200) {
+                    this.setState({
+                        blogItems: response.data,
+                        blogModalIsOpen: false
+                    })
+                }
+            })
+
+    }
+    //https://centralhubapi.herokuapp.com/blog-data
+    getBlogItems(username, password) {
+        axios.post(`http://localhost:3001/blog-data/${username}`, { password })
+            .then(response => {
+                if (response.status === 200) {
+                    this.setState({
+                        blogItems: response.data,
+                        loggedIn: true
+                    });
+                    console.log(response);
+                }
+
             })
     }
-    componentDidMount() {
-        console.log(this.state.blogItems)
-        this.getBlogItems();
-    }
+
 
     openModal() {
         this.setState({
             blogModalIsOpen: true
         })
     }
-
+    //https://centralhubapi.herokuapp.com/blog-data/${blogId}
     handleDeleteBlog(blogId) {
-        axios.delete(`https://centralhubapi.herokuapp.com/blog-data/${blogId}`).then(response => {
+        axios.delete(`http://localhost:3001/blog-data/${this.state.username}/${blogId}`).then(response => {
             console.log('delete', response)
             this.setState({
                 blogItems: response.data
             })
-            this.getBlogItems();
         })
+    }
+
+    getUsername(e) {
+        this.setState({ username: e.target.value })
+    }
+
+    handleKeyDown = e => {
+        if (e.keyCode === ENTER_KEY) {
+            this.submitChange();
+        }
+    }
+
+    submitChange = () => {
+        const username = this.state.username
+        const password = document.querySelector("#password").value
+        if (username && password) {
+            this.getBlogItems(username, password);
+        }
     }
 
     render() {
@@ -64,9 +111,11 @@ class Blog extends Component {
                     handleSuccessfulNewBlogSubmission={this.handleSuccessfulNewBlogSubmission}
                     handleModalClose={this.handleModalClose}
                     modalIsOpen={this.state.blogModalIsOpen}
+                    username={this.state.username}
                 />
 
-                {this.state.blogItems.blogs.map(function (blogItem) {
+
+                {this.state.blogItems.map(function (blogItem) {
                     return (
                         <div className="blog-item" key={blogItem.id}>
                             <div className="blog-title">{blogItem.title}</div>
@@ -76,7 +125,38 @@ class Blog extends Component {
                     )
                 }.bind(this))}
 
-                <button onClick={this.openModal}>New Blog</button>
+                {this.state.loggedIn ? (
+                    <div>
+                        <button className='new_blog_button' onClick={this.openModal}>New Blog</button>
+                        <button className='logout__button' onClick={() => this.setState({
+                            username: "",
+                            loggedIn: false,
+                            blogItems: []
+                        })}>Logout</button>
+                    </div>) : (
+                    <div className='login-form'>
+                        <input
+                            className='login__item login__username'
+                            name='username'
+                            type='text'
+                            placeholder='Enter Username'
+                            value={this.state.username}
+                            onChange={this.getUsername}
+                            onKeyDown={this.handleKeyDown}
+                        />
+                        <input
+                            className='login__item login__password'
+                            name='password'
+                            type='password'
+                            placeholder='Enter Password'
+                            id="password"
+                            onChange={this.getPassword}
+                            onKeyDown={this.handleKeyDown}
+                        />
+                        <button className='login__item login__button' onClick={this.submitChange}>Login</button>
+                        <button className='login__item login__createUser' onClick={this.createUser}>Create User</button>
+                    </div>
+                )}
 
             </div>
         )

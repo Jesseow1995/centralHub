@@ -63,6 +63,17 @@
     }
 }
 
+.login-form {
+    display: flex;
+    flex-direction: column;
+    .login__item {
+        margin: 5px;
+    }
+}
+
+.new_blog_button {
+    margin: 5px;
+}
 @media only screen and (max-width: 1200px) {
     .blog-container {
         margin-top: 110px;

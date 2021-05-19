@@ -67,13 +67,19 @@
 .categories__select {
     width: auto;
     height: 100%;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     &__select {
         width: 250px;
         position: relative;
-
+        padding-left: 15px;
         
+    }
+    input {
+        text-align-last: center;
     }
 }
 

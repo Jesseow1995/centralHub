@@ -9,15 +9,10 @@ export default class NavBar extends Component {
         return (
             <div className='nav-bar'>
                 <div className='nav-bar-links'>
-                    {/* <NavLink exact to='/' className='nav-bar-link'>Home</NavLink>
-                    <NavLink exact to='/lifeUpdates' className='nav-bar-link'>Life Updates</NavLink>
-                    <NavLink exact to='/media' className='nav-bar-link'>Media</NavLink> */}
                     <a className='nav-bar__link' onClick={() => history.push('/')}>Home</a>
                     <a className='nav-bar__link' onClick={() => history.push('/lifeUpdates')}>Life Updates</a>
                     <a className='nav-bar__link' onClick={() => history.push('/media')}>Media</a>
                     <a className='nav-bar__link' onClick={() => history.push('/blog')}>Blog</a>
-
-
                 </div>
 
 

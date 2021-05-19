@@ -42,6 +42,7 @@ export default class BlogModal extends Component {
 
                 <BlogForm
                     handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
+                    username={this.props.username}
                 />
             </ReactModal>
         )
