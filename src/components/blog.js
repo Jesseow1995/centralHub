@@ -28,7 +28,7 @@ class Blog extends Component {
 
         const createUser = this.state.createUser
         console.log(createUser)
-        axios.put('http://localhost:3001/blog-data', { username, password })
+        axios.put('https://centralhubapi.herokuapp.com/blog-data', { username, password })
             .then(response => {
                 this.setState({
                     username: username,
@@ -43,7 +43,7 @@ class Blog extends Component {
         })
     }
     handleSuccessfulNewBlogSubmission() {
-        axios.get(`http://localhost:3001/blog-data/${this.state.username}`)
+        axios.get(`https://centralhubapi.herokuapp.com/blog-data/${this.state.username}`)
             .then(response => {
                 if (response.status === 200) {
                     this.setState({
@@ -54,9 +54,9 @@ class Blog extends Component {
             })
 
     }
-    //https://centralhubapi.herokuapp.com/blog-data
+    //
     getBlogItems(username, password) {
-        axios.post(`http://localhost:3001/blog-data/${username}`, { password })
+        axios.post(`https://centralhubapi.herokuapp.com/blog-data/${username}`, { password })
             .then(response => {
                 if (response.status === 200) {
                     this.setState({
@@ -77,7 +77,7 @@ class Blog extends Component {
     }
     //https://centralhubapi.herokuapp.com/blog-data/${blogId}
     handleDeleteBlog(blogId) {
-        axios.delete(`http://localhost:3001/blog-data/${this.state.username}/${blogId}`).then(response => {
+        axios.delete(`https://centralhubapi.herokuapp.com/blog-data/${this.state.username}/${blogId}`).then(response => {
             console.log('delete', response)
             this.setState({
                 blogItems: response.data

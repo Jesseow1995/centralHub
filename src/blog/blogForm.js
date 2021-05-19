@@ -18,7 +18,7 @@ export default class BlogForm extends Component {
   }
 
   handleSubmit(event) {
-    axios.patch(`http://localhost:3001/blog-data/${this.props.username}`, { title: this.state.title, content: this.state.content }).then(resp => {
+    axios.patch(`https://centralhubapi.herokuapp.com/blog-data/${this.props.username}`, { title: this.state.title, content: this.state.content }).then(resp => {
       console.log(resp);
       this.setState({
         id: "",
