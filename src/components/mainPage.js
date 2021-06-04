@@ -34,9 +34,6 @@ class MainPage extends Component {
         }
     }
 
-    componentDidMount() {
-    }
-
     render() {
         const { ...config } = this.state;
         return (

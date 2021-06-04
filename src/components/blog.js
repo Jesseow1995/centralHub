@@ -54,7 +54,7 @@ class Blog extends Component {
             })
 
     }
-    //
+
     getBlogItems(username, password) {
         axios.post(`https://centralhubapi.herokuapp.com/blog-data/${username}`, { password })
             .then(response => {
@@ -75,7 +75,7 @@ class Blog extends Component {
             blogModalIsOpen: true
         })
     }
-    //https://centralhubapi.herokuapp.com/blog-data/${blogId}
+
     handleDeleteBlog(blogId) {
         axios.delete(`https://centralhubapi.herokuapp.com/blog-data/${this.state.username}/${blogId}`).then(response => {
             console.log('delete', response)

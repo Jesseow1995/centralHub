@@ -1,3 +1,7 @@
+// This file, along with json file included in the project folder, is not used in deployment. Only for local testing. The CentralHubAPI repository mentioned in the READEME 
+// contains the similar file that is used in delpoyment
+
+
 const fs = require('fs');
 const cors = require('cors');
 const express = require('express');

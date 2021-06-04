@@ -21,8 +21,6 @@ class LifeUpdates extends Component {
         this.getArticles(e.target.value);
     }
 
-    //old news api that did not work after deploying on heroku
-    //https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${newsAPIkey}
     getArticles(country) {
         const headers = {
             crossorigin: true,
@@ -42,8 +40,6 @@ class LifeUpdates extends Component {
     componentWillMount() {
         this.getArticles('us');
     }
-
-
 
     render() {
         const data = Array.from(this.state.articles);

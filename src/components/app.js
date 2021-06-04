@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MainPage from './mainPage';
 import NavBar from './header/nav-bar';
 
 export default class App extends Component {

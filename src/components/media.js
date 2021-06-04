@@ -57,7 +57,7 @@ export default class Media extends Component {
     }
 
     getYouTubeQuery(query) {
-        axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=5&order=viewCount&q=${query}&regionCode=us&type=video&videoEmbeddable=true&key=AIzaSyB_q0TEto5sFJBMzgqPB8uGFkzByakfoJI`)
+        axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=5&order=viewCount&q=${query}&regionCode=us&type=video&videoEmbeddable=true&key=${youtubeAPIkey}`)
             .then(response => {
                 console.log('response for youtube query:', query, response)
                 this.setState({

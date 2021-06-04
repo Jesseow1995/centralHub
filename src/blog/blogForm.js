@@ -40,20 +40,6 @@ export default class BlogForm extends Component {
 
   }
 
-  buildForm() {
-    let formData = new FormData();
-
-    formData.append("blog[title", this.state.title);
-    //formData.append("blog[blog_status]", this.state.blog_status)
-    formData.append("blog[content]", this.state.content)
-
-    if (this.state.featured_image) {
-      formData.append("blog[featured_image", this.state.featured_image)
-    };
-
-    return formData;
-  }
-
   render() {
     return (
       <div>
