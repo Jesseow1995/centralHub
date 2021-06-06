@@ -19,7 +19,6 @@ export default class BlogForm extends Component {
 
   handleSubmit(event) {
     axios.patch(`https://centralhubapi.herokuapp.com/blog-data/${this.props.username}`, { title: this.state.title, content: this.state.content }).then(resp => {
-      console.log(resp);
       this.setState({
         id: "",
         title: "",
@@ -28,7 +27,6 @@ export default class BlogForm extends Component {
 
       this.props.handleSuccessfulFormSubmission(resp.data.blogs);
     }).catch(error => {
-      console.log("error posting blog data to api", error)
     });
     event.preventDefault();
   }

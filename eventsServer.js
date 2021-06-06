@@ -34,4 +34,3 @@ app.delete(`/events/:eventId`, function (req, res) {
 
 app.listen(port, () => console.log('server started on port', port));
 
-//console.log("server started");

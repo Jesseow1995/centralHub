@@ -33,7 +33,6 @@ export default class Media extends Component {
 
     getVideos(e) {
         this.setState({ videoCategoryId: e.target.value });
-        console.log('Selected Category', this.state.videoCategoryId)
         this.getYouTubeCategoryVideos(e.target.value);
     }
 
@@ -59,35 +58,19 @@ export default class Media extends Component {
     getYouTubeQuery(query) {
         axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=5&order=viewCount&q=${query}&regionCode=us&type=video&videoEmbeddable=true&key=${youtubeAPIkey}`)
             .then(response => {
-                console.log('response for youtube query:', query, response)
                 this.setState({
                     youtubeVideos: response.data.items
                 })
             })
     }
 
-    //to get a specific video using the youtube videos id
-    // getYouTubeData() {
-    //     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=wATH0Rl8Lew&key=${youtubeAPIkey}`)
-    //         .then(response => {
-    //             console.log('response', response);
-    //             this.setState({
-    //                 youtubeVidId: response.data.items[0].id
-    //             })
-    //             console.log('this is the youtubeVidId', this.state.youtubeVidId)
-    //         })
-    // }
-
-
     // retrieve category names built into youtube api
     getYouTubeCategories() {
         axios.get(`https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=us&key=AIzaSyB_q0TEto5sFJBMzgqPB8uGFkzByakfoJI`)
             .then(response => {
-                console.log('response for youtube categories', response);
                 this.setState({
                     youtubeVideoCategory: response.data.items
                 })
-                console.log('categories', this.state.youtubeVideoCategory)
             })
     }
 
@@ -95,11 +78,9 @@ export default class Media extends Component {
     getYouTubeCategoryVideos(category) {
         axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&regionCode=us&relevanceLanguage=en&type=video&videoEmbeddable=true&videoCategoryId=${category}&key=AIzaSyB_q0TEto5sFJBMzgqPB8uGFkzByakfoJI`)
             .then(response => {
-                console.log('response for category search', response)
                 this.setState({
                     youtubeVideos: response.data.items
                 })
-                console.log('videos', this.state.youtubeCategoryVideos)
             })
     }
 

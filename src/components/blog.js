@@ -27,7 +27,6 @@ class Blog extends Component {
         const password = document.querySelector("#password").value
 
         const createUser = this.state.createUser
-        console.log(createUser)
         axios.put('https://centralhubapi.herokuapp.com/blog-data', { username, password })
             .then(response => {
                 this.setState({
@@ -63,7 +62,7 @@ class Blog extends Component {
                         blogItems: response.data,
                         loggedIn: true
                     });
-                    console.log(response);
+
                 }
 
             })
@@ -78,7 +77,6 @@ class Blog extends Component {
 
     handleDeleteBlog(blogId) {
         axios.delete(`https://centralhubapi.herokuapp.com/blog-data/${this.state.username}/${blogId}`).then(response => {
-            console.log('delete', response)
             this.setState({
                 blogItems: response.data
             })

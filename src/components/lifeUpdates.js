@@ -10,14 +10,12 @@ class LifeUpdates extends Component {
             articles: {},
             country: 'US'
         }
-
         this.getArticles = this.getArticles.bind(this);
         this.getCountry = this.getCountry.bind(this);
     }
 
     getCountry(e) {
         this.setState({ country: e.target.value });
-        console.log('Selected Country', this.state.country)
         this.getArticles(e.target.value);
     }
 
@@ -29,11 +27,10 @@ class LifeUpdates extends Component {
         }
         axios.get(`https://gnews.io/api/v4/top-headlines?country=${country}&token=${newsAPIkey}`)
             .then(response => {
-                console.log(response);
                 this.setState({
                     articles: response.data.articles
                 })
-                console.log('This is State', this.state.articles)
+
             })
     }
 
@@ -43,7 +40,6 @@ class LifeUpdates extends Component {
 
     render() {
         const data = Array.from(this.state.articles);
-        console.log('data', data)
         const country = String(this.state.country)
         return (
             <div className='life-updates'>
